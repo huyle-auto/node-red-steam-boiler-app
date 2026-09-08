@@ -1,0 +1,12 @@
+{
+    "name": "node-red-steam-boiler-app",
+    "description": "Made for integrating MES/ERP with SteamBoilerApp via MQTT, REST API, OPC UA and Modbus. An operational dashboard is also added.",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}

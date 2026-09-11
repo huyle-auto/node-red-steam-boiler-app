@@ -1,1 +1,1145 @@
-[]
+[
+    {
+        "id": "ae8f76ceb64e39ed",
+        "type": "tab",
+        "label": "REST API",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "128b0e5f936d4a61",
+        "type": "tab",
+        "label": "Central Hub",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "66207a102078fa5d",
+        "type": "subflow",
+        "name": "API Auth",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ec759b880fb7b90b"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 900,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "8bf0aa14e017f22d",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "API_KEY",
+                "type": "str",
+                "value": "dCPkUGXOjzirmHpGjfycFFeAzZaZyi7A"
+            }
+        ],
+        "meta": {},
+        "color": "#FF6961",
+        "icon": "node-red/function.svg"
+    },
+    {
+        "id": "302b5d5e08f2edd6",
+        "type": "subflow",
+        "name": "GetFuelUsageInTimeRange",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "df7c973e6044a08b"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1560,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "8a5bd01dad4b0fb8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#C0DEED",
+        "icon": "node-red/function.svg"
+    },
+    {
+        "id": "d58d6411e4265158",
+        "type": "subflow",
+        "name": "GetServerStatus",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "8db8e4b7c7e9d443"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 880,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "8db8e4b7c7e9d443",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#8FE381",
+        "icon": "node-red/function.svg"
+    },
+    {
+        "id": "1d8c9e704f4ac278",
+        "type": "subflow",
+        "name": "GetBoilerStatus",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "36145839c5fab785"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1180,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "e3d67cb703ab56a0",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99",
+        "icon": "node-red/function.svg"
+    },
+    {
+        "id": "d0fc261fce07d878",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{\"/Functions\":{\"path\":\"/Functions\",\"name\":\"Functions\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-11T07:23:55.626Z\",\"updatedAt\":\"2026-09-11T07:24:02.598Z\",\"folders\":[],\"files\":[]}},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.810Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"subflowFolders\":{\"/Functions\":{\"path\":\"/Functions\",\"name\":\"Functions\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-11T07:23:55.626Z\",\"updatedAt\":\"2026-09-11T07:24:02.598Z\",\"folders\":[],\"files\":[\"66207a102078fa5d\"]}},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/Functions\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T07:24:12.911Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"updatedAt\":\"2026-09-11T07:24:12.911Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "4506e95d92db8a32",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.810Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"subflowFolders\":{},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"updatedAt\":\"2026-09-11T06:11:03.208Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "b50bc6e444992d10",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.810Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"subflowFolders\":{},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"updatedAt\":\"2026-09-11T04:42:00.173Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "c98b71e2ddeb9cf0",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.810Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"subflowFolders\":{},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-11T04:10:57.811Z\",\"updatedAt\":\"2026-09-11T04:10:57.811Z\"}},\"updatedAt\":\"2026-09-11T04:29:54.093Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "c435c135e28af5e6",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{\"/Dashboard\":{\"path\":\"/Dashboard\",\"name\":\"Dashboard\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:05.224Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\",\"folders\":[],\"files\":[\"7e5fc71fc1b55a7e\"]},\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:06.711Z\",\"updatedAt\":\"2026-09-08T04:35:01.638Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[\"128b0e5f936d4a61\",\"39c7ddb596091913\",\"7d92f680139b39e1\",\"ae8f76ceb64e39ed\"]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:28:25.144Z\",\"folders\":[],\"files\":[]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:28:20.546Z\",\"folders\":[],\"files\":[]}},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:25:33.188Z\"},\"39c7ddb596091913\":{\"id\":\"39c7ddb596091913\",\"name\":\"New flow\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:35:12.945Z\",\"updatedAt\":\"2026-09-08T04:35:12.945Z\"},\"7d92f680139b39e1\":{\"id\":\"7d92f680139b39e1\",\"name\":\"Flow 1\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:38:29.790Z\",\"updatedAt\":\"2026-09-08T04:40:00.527Z\"},\"7e5fc71fc1b55a7e\":{\"id\":\"7e5fc71fc1b55a7e\",\"name\":\"New flow\",\"path\":\"/Dashboard\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:13:16.889Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:08.394Z\"},\"eaf2f4fcd856bd06\":{\"id\":\"eaf2f4fcd856bd06\",\"name\":\"Flow 1\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:40:07.247Z\",\"updatedAt\":\"2026-09-08T04:40:07.247Z\"}},\"subflowFolders\":{\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:20.195Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#5e81ac\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:27:14.483Z\",\"folders\":[],\"files\":[\"1d8c9e704f4ac278\",\"302b5d5e08f2edd6\"]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:27:51.350Z\",\"folders\":[],\"files\":[\"66207a102078fa5d\",\"d58d6411e4265158\"]}},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:34:48.502Z\",\"updatedAt\":\"2026-09-10T08:35:35.793Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:43.975Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:03:38.087Z\",\"updatedAt\":\"2026-09-10T08:32:32.504Z\"}},\"updatedAt\":\"2026-09-11T02:09:16.893Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "3504ebb5630b4a22",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{\"/Dashboard\":{\"path\":\"/Dashboard\",\"name\":\"Dashboard\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:05.224Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\",\"folders\":[],\"files\":[\"7e5fc71fc1b55a7e\"]},\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:06.711Z\",\"updatedAt\":\"2026-09-08T04:35:01.638Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[\"128b0e5f936d4a61\",\"39c7ddb596091913\",\"7d92f680139b39e1\",\"ae8f76ceb64e39ed\"]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:28:25.144Z\",\"folders\":[],\"files\":[]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:28:20.546Z\",\"folders\":[],\"files\":[]}},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:25:33.188Z\"},\"39c7ddb596091913\":{\"id\":\"39c7ddb596091913\",\"name\":\"New flow\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:35:12.945Z\",\"updatedAt\":\"2026-09-08T04:35:12.945Z\"},\"7d92f680139b39e1\":{\"id\":\"7d92f680139b39e1\",\"name\":\"Flow 1\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:38:29.790Z\",\"updatedAt\":\"2026-09-08T04:40:00.527Z\"},\"7e5fc71fc1b55a7e\":{\"id\":\"7e5fc71fc1b55a7e\",\"name\":\"New flow\",\"path\":\"/Dashboard\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:13:16.889Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:08.394Z\"},\"eaf2f4fcd856bd06\":{\"id\":\"eaf2f4fcd856bd06\",\"name\":\"Flow 1\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:40:07.247Z\",\"updatedAt\":\"2026-09-08T04:40:07.247Z\"}},\"subflowFolders\":{\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:20.195Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#5e81ac\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:27:14.483Z\",\"folders\":[],\"files\":[\"1d8c9e704f4ac278\",\"302b5d5e08f2edd6\"]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:27:51.350Z\",\"folders\":[],\"files\":[\"66207a102078fa5d\",\"d58d6411e4265158\"]}},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:34:48.502Z\",\"updatedAt\":\"2026-09-10T08:35:35.793Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:43.975Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:03:38.087Z\",\"updatedAt\":\"2026-09-10T08:32:32.504Z\"}},\"updatedAt\":\"2026-09-10T08:53:47.538Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "2fbf6408b4e7948f",
+        "type": "MSSQL-CN",
+        "tdsVersion": "7_4",
+        "name": "MSSQL DB",
+        "server": "DESKTOP-C9TFPUG",
+        "port": "1433",
+        "encyption": false,
+        "trustServerCertificate": true,
+        "database": "ProductionDB",
+        "useUTC": true,
+        "connectTimeout": "10000",
+        "requestTimeout": "10000",
+        "cancelTimeout": "10000",
+        "pool": "5",
+        "parseJSON": false,
+        "enableArithAbort": true,
+        "readOnlyIntent": false
+    },
+    {
+        "id": "14e358b6d1db3ef4",
+        "type": "global-config",
+        "env": [
+            {
+                "name": "folders",
+                "value": "{\"version\":1,\"folders\":{\"/Dashboard\":{\"path\":\"/Dashboard\",\"name\":\"Dashboard\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:05.224Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\",\"folders\":[],\"files\":[\"7e5fc71fc1b55a7e\"]},\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-08T04:13:06.711Z\",\"updatedAt\":\"2026-09-08T04:35:01.638Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[\"128b0e5f936d4a61\",\"39c7ddb596091913\",\"7d92f680139b39e1\",\"ae8f76ceb64e39ed\"]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:28:25.144Z\",\"folders\":[],\"files\":[]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"#88c0d0\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:28:20.546Z\",\"folders\":[],\"files\":[]}},\"flows\":{\"128b0e5f936d4a61\":{\"id\":\"128b0e5f936d4a61\",\"name\":\"Central Hub\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:25:33.188Z\"},\"39c7ddb596091913\":{\"id\":\"39c7ddb596091913\",\"name\":\"New flow\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:35:12.945Z\",\"updatedAt\":\"2026-09-08T04:35:12.945Z\"},\"7d92f680139b39e1\":{\"id\":\"7d92f680139b39e1\",\"name\":\"Flow 1\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:38:29.790Z\",\"updatedAt\":\"2026-09-08T04:40:00.527Z\"},\"7e5fc71fc1b55a7e\":{\"id\":\"7e5fc71fc1b55a7e\",\"name\":\"New flow\",\"path\":\"/Dashboard\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:13:16.889Z\",\"updatedAt\":\"2026-09-08T04:34:51.693Z\"},\"ae8f76ceb64e39ed\":{\"id\":\"ae8f76ceb64e39ed\",\"name\":\"REST API\",\"path\":\"/MES integration\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:08.394Z\"},\"eaf2f4fcd856bd06\":{\"id\":\"eaf2f4fcd856bd06\",\"name\":\"Flow 1\",\"path\":\"/\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-08T04:40:07.247Z\",\"updatedAt\":\"2026-09-08T04:40:07.247Z\"}},\"subflowFolders\":{\"/MES integration\":{\"path\":\"/MES integration\",\"name\":\"MES integration\",\"parent\":\"/\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:20.195Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\",\"folders\":[\"/MES integration/MSSQL\",\"/MES integration/Utils\"],\"files\":[]},\"/MES integration/MSSQL\":{\"path\":\"/MES integration/MSSQL\",\"name\":\"MSSQL\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-database\",\"color\":\"#5e81ac\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:26:51.007Z\",\"updatedAt\":\"2026-09-10T07:27:14.483Z\",\"folders\":[],\"files\":[\"1d8c9e704f4ac278\",\"302b5d5e08f2edd6\"]},\"/MES integration/Utils\":{\"path\":\"/MES integration/Utils\",\"name\":\"Utils\",\"parent\":\"/MES integration\",\"icon\":\"fa fa-folder\",\"color\":\"\",\"hidden\":false,\"disabled\":false,\"locked\":false,\"createdAt\":\"2026-09-10T07:27:48.764Z\",\"updatedAt\":\"2026-09-10T07:27:51.350Z\",\"folders\":[],\"files\":[\"66207a102078fa5d\",\"d58d6411e4265158\"]}},\"subflows\":{\"1d8c9e704f4ac278\":{\"id\":\"1d8c9e704f4ac278\",\"name\":\"GetBoilerStatus\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:34:48.502Z\",\"updatedAt\":\"2026-09-10T08:35:35.793Z\"},\"302b5d5e08f2edd6\":{\"id\":\"302b5d5e08f2edd6\",\"name\":\"GetFuelUsageInTimeRange\",\"path\":\"/MES integration/MSSQL\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T07:27:20.195Z\"},\"66207a102078fa5d\":{\"id\":\"66207a102078fa5d\",\"name\":\"API Auth\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T07:24:53.236Z\",\"updatedAt\":\"2026-09-10T08:32:43.975Z\"},\"d58d6411e4265158\":{\"id\":\"d58d6411e4265158\",\"name\":\"GetServerStatus\",\"path\":\"/MES integration/Utils\",\"icon\":\"\",\"color\":\"\",\"hidden\":false,\"createdAt\":\"2026-09-10T08:03:38.087Z\",\"updatedAt\":\"2026-09-10T08:32:32.504Z\"}},\"updatedAt\":\"2026-09-10T08:44:09.778Z\"}",
+                "type": "json"
+            }
+        ],
+        "modules": {}
+    },
+    {
+        "id": "ec759b880fb7b90b",
+        "type": "switch",
+        "z": "66207a102078fa5d",
+        "name": "check valid http req",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 230,
+        "y": 80,
+        "wires": [
+            [
+                "8bf0aa14e017f22d"
+            ],
+            [
+                "09fdfddd8b887c5d"
+            ]
+        ]
+    },
+    {
+        "id": "96b3064f197e7e36",
+        "type": "http response",
+        "z": "66207a102078fa5d",
+        "name": "400 Bad Request",
+        "statusCode": "400",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 970,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5206c0b0869d5538",
+        "type": "http response",
+        "z": "66207a102078fa5d",
+        "name": "401 Unauthorized",
+        "statusCode": "401",
+        "headers": {
+            "WWW-Authenticate": "ApiKey",
+            "content-type": "application/json"
+        },
+        "x": 970,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "317179ab3796dd86",
+        "type": "change",
+        "z": "66207a102078fa5d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"API Authentication failed\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 180,
+        "wires": [
+            [
+                "5206c0b0869d5538"
+            ]
+        ]
+    },
+    {
+        "id": "8bf0aa14e017f22d",
+        "type": "switch",
+        "z": "66207a102078fa5d",
+        "name": "api key check",
+        "property": "req.headers.node-red-api-key",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "API_KEY",
+                "vt": "env"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 520,
+        "y": 80,
+        "wires": [
+            [],
+            [
+                "317179ab3796dd86"
+            ]
+        ]
+    },
+    {
+        "id": "09fdfddd8b887c5d",
+        "type": "change",
+        "z": "66207a102078fa5d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Invalid HTTP request format\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 280,
+        "wires": [
+            [
+                "96b3064f197e7e36"
+            ]
+        ]
+    },
+    {
+        "id": "df6373987863c338",
+        "type": "MSSQL",
+        "z": "302b5d5e08f2edd6",
+        "mssqlCN": "2fbf6408b4e7948f",
+        "name": "dbo.GetFuelUsageInTimeRange",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": "0",
+        "query": "dbo.GetFuelUsageInTimeRange",
+        "modeOpt": "",
+        "modeOptType": "execute",
+        "queryOpt": "payload",
+        "queryOptType": "editor",
+        "paramsOpt": "",
+        "paramsOptType": "editor",
+        "rows": "rows",
+        "rowsType": "msg",
+        "parseMustache": true,
+        "params": [
+            {
+                "output": false,
+                "name": "FromIso8601",
+                "type": "VarChar(?)",
+                "valueType": "msg",
+                "value": "payload.from",
+                "options": {
+                    "nullable": true,
+                    "primary": false,
+                    "identity": false,
+                    "readOnly": false
+                }
+            },
+            {
+                "output": false,
+                "name": "ToIso8601",
+                "type": "VarChar(?)",
+                "valueType": "msg",
+                "value": "payload.to",
+                "options": {
+                    "nullable": true,
+                    "primary": false,
+                    "identity": false,
+                    "readOnly": false
+                }
+            }
+        ],
+        "x": 690,
+        "y": 140,
+        "wires": [
+            [
+                "81dff189eb2046e6"
+            ]
+        ],
+        "icon": "node-red/db.svg"
+    },
+    {
+        "id": "497d3e110c90a6eb",
+        "type": "catch",
+        "z": "302b5d5e08f2edd6",
+        "name": "exception handler",
+        "scope": [
+            "df6373987863c338"
+        ],
+        "uncaught": false,
+        "x": 290,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df7c973e6044a08b",
+        "type": "function",
+        "z": "302b5d5e08f2edd6",
+        "name": "Validate and Convert time params",
+        "func": "// 1. Grab the parameters from the msg object\nconst fromStr = msg.req.query.from;\nconst toStr = msg.req.query.to;\n\n// 2. Regex to validate strict ISO 8601 without any timezone offsets (e.g., YYYY-MM-DDTHH:mm:ss)\n// This ensures there is no trailing 'Z', '+00:00', or '-05:00'\nconst iso8601NoTimezoneRegex = /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?$/;\n\nconst isValidFrom = fromStr && iso8601NoTimezoneRegex.test(fromStr);\nconst isValidTo = toStr && iso8601NoTimezoneRegex.test(toStr);\n\n// ISO 8601 check\nif (!isValidFrom || !isValidTo) {\n    msg.payload = { \n        error: \"Bad Request\", \n        message: \"Both 'from' and 'to' query parameters are required and must be in strict ISO 8601 format without a timezone (YYYY-MM-DDTHH:mm:ss).\" \n    };\n    msg.statusCode = 400;\n    \n    return [null, msg];\n}\n\nmsg.payload = {\n    from: fromStr,\n    to: toStr\n};\n\nreturn [msg, null];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "df6373987863c338"
+            ],
+            [
+                "68078c20cb57a6c5"
+            ]
+        ],
+        "info": "Input ISO 8601 -> keep as string\r\n\r\nAssume same timezone to DB"
+    },
+    {
+        "id": "13b398f9a3ea5e8f",
+        "type": "http response",
+        "z": "302b5d5e08f2edd6",
+        "name": "400 Bad Request",
+        "statusCode": "400",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 850,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "68078c20cb57a6c5",
+        "type": "change",
+        "z": "302b5d5e08f2edd6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Invalid request. Check parameters again\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 260,
+        "wires": [
+            [
+                "13b398f9a3ea5e8f"
+            ]
+        ]
+    },
+    {
+        "id": "81dff189eb2046e6",
+        "type": "switch",
+        "z": "302b5d5e08f2edd6",
+        "name": "switch success / error",
+        "property": "error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 980,
+        "y": 140,
+        "wires": [
+            [
+                "8a5bd01dad4b0fb8"
+            ],
+            [
+                "27f5a6d56da64df7"
+            ]
+        ]
+    },
+    {
+        "id": "1c192884f428a5d6",
+        "type": "http response",
+        "z": "302b5d5e08f2edd6",
+        "name": "500 Internal Server Error",
+        "statusCode": "500",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1470,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "8a5bd01dad4b0fb8",
+        "type": "json",
+        "z": "302b5d5e08f2edd6",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 1210,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27f5a6d56da64df7",
+        "type": "change",
+        "z": "302b5d5e08f2edd6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Internal server error. Please try again\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 260,
+        "wires": [
+            [
+                "1c192884f428a5d6"
+            ]
+        ]
+    },
+    {
+        "id": "8db8e4b7c7e9d443",
+        "type": "change",
+        "z": "d58d6411e4265158",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"status\":\"Server is running\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36145839c5fab785",
+        "type": "MSSQL",
+        "z": "1d8c9e704f4ac278",
+        "mssqlCN": "2fbf6408b4e7948f",
+        "name": "GetBoilerStatus",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": "0",
+        "query": "SELECT TOP 1 *\r\nFROM dbo.SensorData\r\nORDER BY Timestamp DESC",
+        "modeOpt": "",
+        "modeOptType": "query",
+        "queryOpt": "payload",
+        "queryOptType": "editor",
+        "paramsOpt": "",
+        "paramsOptType": "none",
+        "rows": "rows",
+        "rowsType": "msg",
+        "parseMustache": true,
+        "params": [
+            {
+                "output": false,
+                "name": "FromIso8601",
+                "type": "VarChar(?)",
+                "valueType": "msg",
+                "value": "payload.from",
+                "options": {
+                    "nullable": true,
+                    "primary": false,
+                    "identity": false,
+                    "readOnly": false
+                }
+            },
+            {
+                "output": false,
+                "name": "ToIso8601",
+                "type": "VarChar(?)",
+                "valueType": "msg",
+                "value": "payload.to",
+                "options": {
+                    "nullable": true,
+                    "primary": false,
+                    "identity": false,
+                    "readOnly": false
+                }
+            }
+        ],
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "adc6b5812b2b3a4f"
+            ]
+        ],
+        "icon": "node-red/db.svg"
+    },
+    {
+        "id": "3de43b7ea3c4965e",
+        "type": "catch",
+        "z": "1d8c9e704f4ac278",
+        "name": "exception handler",
+        "scope": [
+            "36145839c5fab785"
+        ],
+        "uncaught": false,
+        "x": 150,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "adc6b5812b2b3a4f",
+        "type": "switch",
+        "z": "1d8c9e704f4ac278",
+        "name": "switch success / error",
+        "property": "error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "b96b747077cf6eba"
+            ],
+            [
+                "300549830c0f0298"
+            ]
+        ]
+    },
+    {
+        "id": "01eb0e9ef5f6899d",
+        "type": "http response",
+        "z": "1d8c9e704f4ac278",
+        "name": "500 Internal Server Error",
+        "statusCode": "500",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1010,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e3d67cb703ab56a0",
+        "type": "json",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "300549830c0f0298",
+        "type": "change",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Internal server error. Please try again\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 260,
+        "wires": [
+            [
+                "01eb0e9ef5f6899d"
+            ]
+        ]
+    },
+    {
+        "id": "b96b747077cf6eba",
+        "type": "function",
+        "z": "1d8c9e704f4ac278",
+        "name": "convert and format json",
+        "func": "const [row] = msg.payload;\n\nlet pressureState = \"Unknown\";\n\nif (row.EngineeringValue < 9.4 && row.EngineeringValue >= 6.8){\n    pressureState = \"Normal\";\n}\nelse if (row.EngineeringValue < 6.8){\n    pressureState = \"Low\";\n}\nelse if (row.EngineeringValue > 9.4) {\n    pressureState = \"High\";\n}\n\nmsg.payload = {\n    \"pressure\": row.EngineeringValue,\n    \"pressureState\": pressureState,\n    \"lastUpdated\": row.Timestamp\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "e3d67cb703ab56a0"
+            ]
+        ]
+    },
+    {
+        "id": "7b86cc8e46f504e8",
+        "type": "http in",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "url": "/api/test-alive",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "40c9497179e447b8",
+                "e08e7e8e934da8c9",
+                "7e0cb653c0f6af12"
+            ]
+        ]
+    },
+    {
+        "id": "0d31ae89d0315a4f",
+        "type": "comment",
+        "z": "ae8f76ceb64e39ed",
+        "name": "0. Test Alive",
+        "info": "",
+        "x": 130,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "40c9497179e447b8",
+        "type": "subflow:66207a102078fa5d",
+        "z": "ae8f76ceb64e39ed",
+        "d": true,
+        "name": "",
+        "x": 540,
+        "y": 140,
+        "wires": [
+            [
+                "e08e7e8e934da8c9"
+            ]
+        ]
+    },
+    {
+        "id": "e08e7e8e934da8c9",
+        "type": "link out",
+        "z": "ae8f76ceb64e39ed",
+        "name": "To Central Hub",
+        "mode": "link",
+        "links": [
+            "2f0ce6730b54b53c"
+        ],
+        "x": 755,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e96ea41816935f4b",
+        "type": "http in",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "url": "/api/boiler/fuel/usage",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "83d413696112803a"
+            ]
+        ]
+    },
+    {
+        "id": "d1e0f60f9ec32b57",
+        "type": "comment",
+        "z": "ae8f76ceb64e39ed",
+        "name": "1. Get total fuel usage in time range",
+        "info": "",
+        "x": 200,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "83d413696112803a",
+        "type": "subflow:66207a102078fa5d",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "x": 490,
+        "y": 280,
+        "wires": [
+            [
+                "e08e7e8e934da8c9"
+            ]
+        ]
+    },
+    {
+        "id": "a0375b9f418aecb4",
+        "type": "catch",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "scope": null,
+        "uncaught": true,
+        "x": 140,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87b9dc78ed941483",
+        "type": "comment",
+        "z": "ae8f76ceb64e39ed",
+        "name": "2. Get current boiler status",
+        "info": "",
+        "x": 170,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "bad413a8a8516434",
+        "type": "http in",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "url": "/api/boiler/status",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "76c499277328419a"
+            ]
+        ]
+    },
+    {
+        "id": "76c499277328419a",
+        "type": "subflow:66207a102078fa5d",
+        "z": "ae8f76ceb64e39ed",
+        "name": "",
+        "x": 490,
+        "y": 420,
+        "wires": [
+            [
+                "e08e7e8e934da8c9"
+            ]
+        ]
+    },
+    {
+        "id": "7e0cb653c0f6af12",
+        "type": "debug",
+        "z": "ae8f76ceb64e39ed",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2f0ce6730b54b53c",
+        "type": "link in",
+        "z": "128b0e5f936d4a61",
+        "name": "link in 1",
+        "links": [
+            "e08e7e8e934da8c9"
+        ],
+        "x": 195,
+        "y": 300,
+        "wires": [
+            [
+                "5fe8e6157df3f668"
+            ]
+        ]
+    },
+    {
+        "id": "cbb774df0b226232",
+        "type": "catch",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "scope": null,
+        "uncaught": true,
+        "x": 260,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ec0639ab603f1994",
+        "type": "subflow:302b5d5e08f2edd6",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "0fdab3c32ddb4703"
+            ]
+        ]
+    },
+    {
+        "id": "5fe8e6157df3f668",
+        "type": "switch",
+        "z": "128b0e5f936d4a61",
+        "name": "switch by http path",
+        "property": "req.path",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/api/test-alive",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/api/boiler/fuel/usage",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/api/boiler/status",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "2cbcb63e44f5a71c"
+            ],
+            [
+                "ec0639ab603f1994"
+            ],
+            [
+                "b0af52c291a76729"
+            ]
+        ]
+    },
+    {
+        "id": "c950bcb013bcc024",
+        "type": "comment",
+        "z": "128b0e5f936d4a61",
+        "name": "1. REST API",
+        "info": "",
+        "x": 250,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0fdab3c32ddb4703",
+        "type": "http response",
+        "z": "128b0e5f936d4a61",
+        "name": "200 OK",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1020,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "821aa13ba8727401",
+        "type": "http response",
+        "z": "128b0e5f936d4a61",
+        "name": "200 OK",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1020,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2cbcb63e44f5a71c",
+        "type": "subflow:d58d6411e4265158",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [
+                "821aa13ba8727401"
+            ]
+        ]
+    },
+    {
+        "id": "b0af52c291a76729",
+        "type": "subflow:1d8c9e704f4ac278",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "x": 680,
+        "y": 340,
+        "wires": [
+            [
+                "252b11e718366bb2"
+            ]
+        ]
+    },
+    {
+        "id": "252b11e718366bb2",
+        "type": "http response",
+        "z": "128b0e5f936d4a61",
+        "name": "200 OK",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1020,
+        "y": 340,
+        "wires": []
+    }
+]

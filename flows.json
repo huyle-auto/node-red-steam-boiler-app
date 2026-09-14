@@ -15,6 +15,14 @@
         "env": []
     },
     {
+        "id": "0cee0d2940a34c4b",
+        "type": "tab",
+        "label": "Error Handler",
+        "disabled": false,
+        "info": "Log errors into a .txt at C:\\.node-red-data\\log.txt\r\n\r\nThis flow can be extended to sending push notifications via Email, SMS, etc.",
+        "env": []
+    },
+    {
         "id": "66207a102078fa5d",
         "type": "subflow",
         "name": "API Auth",
@@ -73,7 +81,7 @@
         ],
         "out": [
             {
-                "x": 1560,
+                "x": 1540,
                 "y": 140,
                 "wires": [
                     {
@@ -153,7 +161,30 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDAA99",
+        "color": "#3FADB5",
+        "icon": "node-red/function.svg"
+    },
+    {
+        "id": "d14b64ad455a3fa5",
+        "type": "subflow",
+        "name": "LogErrorToFile",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 260,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "259413981642c6a1"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#FFAAAA",
         "icon": "node-red/function.svg"
     },
     {
@@ -445,7 +476,7 @@
                 }
             }
         ],
-        "x": 690,
+        "x": 630,
         "y": 140,
         "wires": [
             [
@@ -453,21 +484,6 @@
             ]
         ],
         "icon": "node-red/db.svg"
-    },
-    {
-        "id": "497d3e110c90a6eb",
-        "type": "catch",
-        "z": "302b5d5e08f2edd6",
-        "name": "exception handler",
-        "scope": [
-            "df6373987863c338"
-        ],
-        "uncaught": false,
-        "x": 290,
-        "y": 380,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "df7c973e6044a08b",
@@ -481,7 +497,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
+        "x": 300,
         "y": 140,
         "wires": [
             [
@@ -502,8 +518,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 850,
-        "y": 260,
+        "x": 790,
+        "y": 300,
         "wires": []
     },
     {
@@ -525,8 +541,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
-        "y": 260,
+        "x": 580,
+        "y": 300,
         "wires": [
             [
                 "13b398f9a3ea5e8f"
@@ -551,14 +567,15 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 980,
+        "x": 900,
         "y": 140,
         "wires": [
             [
                 "8a5bd01dad4b0fb8"
             ],
             [
-                "27f5a6d56da64df7"
+                "27f5a6d56da64df7",
+                "0de03c3e889237c1"
             ]
         ]
     },
@@ -571,8 +588,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 1470,
-        "y": 260,
+        "x": 1390,
+        "y": 300,
         "wires": []
     },
     {
@@ -583,7 +600,7 @@
         "property": "payload",
         "action": "",
         "pretty": true,
-        "x": 1210,
+        "x": 1150,
         "y": 140,
         "wires": [
             []
@@ -608,12 +625,84 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1240,
-        "y": 260,
+        "x": 1180,
+        "y": 300,
         "wires": [
             [
                 "1c192884f428a5d6"
             ]
+        ]
+    },
+    {
+        "id": "0de03c3e889237c1",
+        "type": "change",
+        "z": "302b5d5e08f2edd6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.id",
+                "pt": "msg",
+                "to": "0de03c3e889237c1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 220,
+        "wires": [
+            [
+                "d5779f97b685c378"
+            ]
+        ]
+    },
+    {
+        "id": "d5779f97b685c378",
+        "type": "change",
+        "z": "302b5d5e08f2edd6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.name",
+                "pt": "msg",
+                "to": "dbo.GetFuelUsageInTimeRange",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1380,
+        "y": 220,
+        "wires": [
+            [
+                "11fb69e5023ec024"
+            ]
+        ]
+    },
+    {
+        "id": "11fb69e5023ec024",
+        "type": "function",
+        "z": "302b5d5e08f2edd6",
+        "name": "propagate soft error ",
+        "func": "node.error(msg.error?.message || \"Soft error occurred. No message provided\", msg);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1610,
+        "y": 220,
+        "wires": [
+            []
         ]
     },
     {
@@ -646,7 +735,7 @@
         "type": "MSSQL",
         "z": "1d8c9e704f4ac278",
         "mssqlCN": "2fbf6408b4e7948f",
-        "name": "GetBoilerStatus",
+        "name": "GetBoilerStatus.sql",
         "outField": "payload",
         "returnType": 0,
         "throwErrors": "0",
@@ -688,7 +777,7 @@
                 }
             }
         ],
-        "x": 280,
+        "x": 290,
         "y": 140,
         "wires": [
             [
@@ -696,21 +785,6 @@
             ]
         ],
         "icon": "node-red/db.svg"
-    },
-    {
-        "id": "3de43b7ea3c4965e",
-        "type": "catch",
-        "z": "1d8c9e704f4ac278",
-        "name": "exception handler",
-        "scope": [
-            "36145839c5fab785"
-        ],
-        "uncaught": false,
-        "x": 150,
-        "y": 360,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "adc6b5812b2b3a4f",
@@ -737,7 +811,8 @@
                 "b96b747077cf6eba"
             ],
             [
-                "300549830c0f0298"
+                "300549830c0f0298",
+                "02abcdf9c36e3dd3"
             ]
         ]
     },
@@ -750,8 +825,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 1010,
-        "y": 260,
+        "x": 1030,
+        "y": 340,
         "wires": []
     },
     {
@@ -787,8 +862,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
-        "y": 260,
+        "x": 800,
+        "y": 340,
         "wires": [
             [
                 "01eb0e9ef5f6899d"
@@ -807,13 +882,170 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
+        "x": 830,
         "y": 140,
         "wires": [
             [
                 "e3d67cb703ab56a0"
             ]
         ]
+    },
+    {
+        "id": "02abcdf9c36e3dd3",
+        "type": "change",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.id",
+                "pt": "msg",
+                "to": "36145839c5fab785",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 240,
+        "wires": [
+            [
+                "82f762d906410527"
+            ]
+        ]
+    },
+    {
+        "id": "82f762d906410527",
+        "type": "change",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.name",
+                "pt": "msg",
+                "to": "GetBoilerStatus.sql",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 240,
+        "wires": [
+            [
+                "2fdb66aec29486fd"
+            ]
+        ]
+    },
+    {
+        "id": "2fdb66aec29486fd",
+        "type": "function",
+        "z": "1d8c9e704f4ac278",
+        "name": "propagate soft error ",
+        "func": "node.error(msg.error?.message || \"Soft error occurred. No message provided\", msg);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "259413981642c6a1",
+        "type": "function",
+        "z": "d14b64ad455a3fa5",
+        "name": "convert error message",
+        "func": "// Get current system time and format locally\nconst now = new Date();\nconst pad = (num) => String(num).padStart(2, '0');\n\nconst dateStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;\nconst timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;\nconst localTimestamp = `${dateStr} ${timeStr}`;\n\n// const sourceName = msg.error?.source?.name ?? msg.origin?.name ?? 'Unknown';\n// const sourceId = msg.error?.source?.id ?? msg.origin?.id ?? 'Unknown';\n// const errorMsg = msg.error.message || 'No message provided';\n\nconst sourceName = msg.origin?.name ?? msg.error?.source?.name ?? 'Unknown';\nconst sourceId = msg.origin?.id ?? msg.error?.source?.id ?? 'Unknown';\n\n// Fallback safely for the error text\nconst errorMsg = msg.error?.message || 'No message provided';\n\nmsg.payload = `${localTimestamp} | Error occured at ${sourceName} (${sourceId}) : ${errorMsg}`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "de9aab13196b49f5"
+            ]
+        ]
+    },
+    {
+        "id": "de9aab13196b49f5",
+        "type": "json",
+        "z": "d14b64ad455a3fa5",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 630,
+        "y": 260,
+        "wires": [
+            [
+                "e732780a4ea98586"
+            ]
+        ]
+    },
+    {
+        "id": "e732780a4ea98586",
+        "type": "file",
+        "z": "d14b64ad455a3fa5",
+        "name": "node-red log",
+        "filename": "C:\\.node-red-data\\log.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 810,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc4f98a1a5811f47",
+        "type": "catch",
+        "z": "d14b64ad455a3fa5",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 300,
+        "y": 360,
+        "wires": [
+            [
+                "0182d6876cc3ba93"
+            ]
+        ]
+    },
+    {
+        "id": "0182d6876cc3ba93",
+        "type": "debug",
+        "z": "d14b64ad455a3fa5",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 360,
+        "wires": []
     },
     {
         "id": "7b86cc8e46f504e8",
@@ -829,9 +1061,7 @@
         "y": 140,
         "wires": [
             [
-                "40c9497179e447b8",
-                "e08e7e8e934da8c9",
-                "7e0cb653c0f6af12"
+                "40c9497179e447b8"
             ]
         ]
     },
@@ -849,9 +1079,8 @@
         "id": "40c9497179e447b8",
         "type": "subflow:66207a102078fa5d",
         "z": "ae8f76ceb64e39ed",
-        "d": true,
         "name": "",
-        "x": 540,
+        "x": 480,
         "y": 140,
         "wires": [
             [
@@ -905,7 +1134,7 @@
         "type": "subflow:66207a102078fa5d",
         "z": "ae8f76ceb64e39ed",
         "name": "",
-        "x": 490,
+        "x": 480,
         "y": 280,
         "wires": [
             [
@@ -923,7 +1152,9 @@
         "x": 140,
         "y": 540,
         "wires": [
-            []
+            [
+                "f5e9a7bfbd7d89ea"
+            ]
         ]
     },
     {
@@ -959,7 +1190,7 @@
         "type": "subflow:66207a102078fa5d",
         "z": "ae8f76ceb64e39ed",
         "name": "",
-        "x": 490,
+        "x": 480,
         "y": 420,
         "wires": [
             [
@@ -968,20 +1199,20 @@
         ]
     },
     {
-        "id": "7e0cb653c0f6af12",
+        "id": "f5e9a7bfbd7d89ea",
         "type": "debug",
         "z": "ae8f76ceb64e39ed",
-        "name": "debug 1",
+        "name": "http in debug",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "req",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 80,
+        "x": 490,
+        "y": 540,
         "wires": []
     },
     {
@@ -1010,7 +1241,9 @@
         "x": 260,
         "y": 520,
         "wires": [
-            []
+            [
+                "2aee9377dc8335de"
+            ]
         ]
     },
     {
@@ -1122,7 +1355,7 @@
         "z": "128b0e5f936d4a61",
         "name": "",
         "x": 680,
-        "y": 340,
+        "y": 320,
         "wires": [
             [
                 "252b11e718366bb2"
@@ -1139,7 +1372,139 @@
             "content-type": "application/json"
         },
         "x": 1020,
-        "y": 340,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "7dc16c2af90863cf",
+        "type": "link out",
+        "z": "128b0e5f936d4a61",
+        "name": "to Error Handling",
+        "mode": "link",
+        "links": [
+            "aba72505e8a116db"
+        ],
+        "x": 1065,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "52033c6aee34575d",
+        "type": "http response",
+        "z": "128b0e5f936d4a61",
+        "name": "500 Internal Server Error",
+        "statusCode": "500",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 970,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "84d3a92d01850947",
+        "type": "change",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Internal server error. Please try again\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 700,
+        "wires": [
+            [
+                "52033c6aee34575d"
+            ]
+        ]
+    },
+    {
+        "id": "2aee9377dc8335de",
+        "type": "switch",
+        "z": "128b0e5f936d4a61",
+        "name": "switch soft / fatal errors",
+        "property": "origin.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 520,
+        "wires": [
+            [
+                "7dc16c2af90863cf"
+            ],
+            [
+                "84d3a92d01850947",
+                "f0b22909d531de28"
+            ]
+        ]
+    },
+    {
+        "id": "f0b22909d531de28",
+        "type": "link out",
+        "z": "128b0e5f936d4a61",
+        "name": "to Error Handling",
+        "mode": "link",
+        "links": [
+            "aba72505e8a116db"
+        ],
+        "x": 1065,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "aba72505e8a116db",
+        "type": "link in",
+        "z": "0cee0d2940a34c4b",
+        "name": "link in 2",
+        "links": [
+            "7dc16c2af90863cf",
+            "f0b22909d531de28"
+        ],
+        "x": 165,
+        "y": 240,
+        "wires": [
+            [
+                "8476f5f3e11715e0"
+            ]
+        ]
+    },
+    {
+        "id": "8476f5f3e11715e0",
+        "type": "subflow:d14b64ad455a3fa5",
+        "z": "0cee0d2940a34c4b",
+        "name": "",
+        "x": 540,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b75e835548d3b2c1",
+        "type": "comment",
+        "z": "0cee0d2940a34c4b",
+        "name": "1. Log to .txt file at C:\\.node-red-data",
+        "info": "",
+        "x": 540,
+        "y": 180,
         "wires": []
     }
 ]

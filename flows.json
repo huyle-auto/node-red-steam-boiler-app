@@ -7,6 +7,14 @@
         "info": ""
     },
     {
+        "id": "5fd16a708702a729",
+        "type": "tab",
+        "label": "MODBUS TCP",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "128b0e5f936d4a61",
         "type": "tab",
         "label": "Central Hub",
@@ -172,7 +180,7 @@
         "category": "",
         "in": [
             {
-                "x": 260,
+                "x": 100,
                 "y": 260,
                 "wires": [
                     {
@@ -289,6 +297,66 @@
             }
         ],
         "modules": {}
+    },
+    {
+        "id": "98b7179d5a7282b0",
+        "type": "modbus-client",
+        "name": "Moxa ioLogik E1242",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "10.0.166.210",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 2000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "d68cec8b76d83d56",
+        "type": "modbus-client",
+        "name": "MODBUS TCP INTERNAL SERVER",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "10502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
     },
     {
         "id": "ec759b880fb7b90b",
@@ -974,7 +1042,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
+        "x": 280,
         "y": 260,
         "wires": [
             [
@@ -990,11 +1058,11 @@
         "property": "payload",
         "action": "str",
         "pretty": false,
-        "x": 630,
+        "x": 510,
         "y": 260,
         "wires": [
             [
-                "e732780a4ea98586"
+                "5f6104a5d28c72bf"
             ]
         ]
     },
@@ -1009,7 +1077,7 @@
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "utf8",
-        "x": 810,
+        "x": 890,
         "y": 260,
         "wires": [
             []
@@ -1022,7 +1090,7 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 300,
+        "x": 140,
         "y": 360,
         "wires": [
             [
@@ -1043,9 +1111,34 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
+        "x": 330,
         "y": 360,
         "wires": []
+    },
+    {
+        "id": "5f6104a5d28c72bf",
+        "type": "delay",
+        "z": "d14b64ad455a3fa5",
+        "name": "queue",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "e732780a4ea98586"
+            ]
+        ]
     },
     {
         "id": "7b86cc8e46f504e8",
@@ -1092,7 +1185,7 @@
         "id": "e08e7e8e934da8c9",
         "type": "link out",
         "z": "ae8f76ceb64e39ed",
-        "name": "To Central Hub",
+        "name": "rest api in to Central Hub",
         "mode": "link",
         "links": [
             "2f0ce6730b54b53c"
@@ -1153,7 +1246,7 @@
         "y": 540,
         "wires": [
             [
-                "f5e9a7bfbd7d89ea"
+                "a1eb6369b11e4656"
             ]
         ]
     },
@@ -1199,27 +1292,232 @@
         ]
     },
     {
-        "id": "f5e9a7bfbd7d89ea",
-        "type": "debug",
+        "id": "a1eb6369b11e4656",
+        "type": "link out",
         "z": "ae8f76ceb64e39ed",
-        "name": "http in debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
+        "name": "rest api in to Error Handler",
+        "mode": "link",
+        "links": [
+            "aba72505e8a116db"
+        ],
+        "x": 755,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "d5f1dbacb62ba191",
+        "type": "rbe",
+        "z": "5fd16a708702a729",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "0.01",
+        "start": "",
+        "inout": "in",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "50982ace0d7071ae"
+            ]
+        ],
+        "info": "blocks if within deadband.\r\n\r\nbut the value is written to server memory.\r\nso users see old value if not updated."
+    },
+    {
+        "id": "c2c88542ee2267da",
+        "type": "modbus-read",
+        "z": "5fd16a708702a729",
+        "name": "READ PRESSURE",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "InputRegister",
+        "adr": "512",
+        "quantity": "1",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "98b7179d5a7282b0",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "bb2c2ac8401fca97"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "bb2c2ac8401fca97",
+        "type": "function",
+        "z": "5fd16a708702a729",
+        "name": "scale 4-20mA",
+        "func": "const rawMin = 0;\nconst rawMax = 65535; \n\nconst engMin = 0.0;   \nconst engMax = 16.0; \n\nlet [rawValue] = msg.payload;\n\n// Clamp for underflow & overflow\nif (rawValue < rawMin) rawValue = rawMin;\nif (rawValue > rawMax) rawValue = rawMax;\n\nlet engValue = ((rawValue - rawMin) / (rawMax - rawMin)) * (engMax - engMin) + engMin;\nengValue = Math.round(engValue * 100) / 100; // Round to 2 decimal places\n\n// Convert (mA) for diagnostics\nlet maValue = ((rawValue - rawMin) / (rawMax - rawMin)) * (20 - 4) + 4;\nmaValue = Math.round(maValue * 100) / 100;\n\nmsg.payload = engValue;\nmsg.mA = maValue;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "d5f1dbacb62ba191"
+            ]
+        ]
+    },
+    {
+        "id": "0b161cc128e015fc",
+        "type": "catch",
+        "z": "5fd16a708702a729",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "ac324dddcc2e88db"
+            ]
+        ]
+    },
+    {
+        "id": "3bdb059b5d29aae4",
+        "type": "link out",
+        "z": "5fd16a708702a729",
+        "name": "modbus tcp in to Central Hub",
+        "mode": "link",
+        "links": [
+            "e23f9e4219dd1d1d"
+        ],
+        "x": 1095,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ac324dddcc2e88db",
+        "type": "link out",
+        "z": "5fd16a708702a729",
+        "name": "modbus tcp in to Error Handler",
+        "mode": "link",
+        "links": [
+            "aba72505e8a116db"
+        ],
+        "x": 395,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "50982ace0d7071ae",
+        "type": "function",
+        "z": "5fd16a708702a729",
+        "name": "inject by payload",
+        "func": "let rawValue = msg.payload;\n\nlet scaledValue = Math.round(Number(rawValue) * 100);\n\nmsg.payload = {\n    value: scaledValue,\n    register: \"input\",\n    address: 0,\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 120,
+        "wires": [
+            [
+                "3bdb059b5d29aae4"
+            ]
+        ]
+    },
+    {
+        "id": "5e7a51e7ee2aa66f",
+        "type": "modbus-read",
+        "z": "5fd16a708702a729",
+        "name": "READ ALARM STATE",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "Coil",
+        "adr": "0",
+        "quantity": "1",
+        "rate": "10",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "98b7179d5a7282b0",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "39cec0f5764960d3"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e2bf189b88b21856",
+        "type": "function",
+        "z": "5fd16a708702a729",
+        "name": "inject by payload",
+        "func": "let state = Boolean(msg.payload);\n\nmsg.payload = {\n    value: state,\n    register: \"coil\",\n    address: 0,\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 260,
+        "wires": [
+            [
+                "3bdb059b5d29aae4"
+            ]
+        ]
+    },
+    {
+        "id": "39cec0f5764960d3",
+        "type": "rbe",
+        "z": "5fd16a708702a729",
+        "name": "unless change state",
+        "func": "rbe",
+        "gap": "0.01",
+        "start": "",
+        "inout": "in",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 540,
+        "y": 260,
+        "wires": [
+            [
+                "e2bf189b88b21856"
+            ]
+        ],
+        "info": "blocks if within deadband.\r\n\r\nbut the value is written to server memory.\r\nso users see old value if not updated."
     },
     {
         "id": "2f0ce6730b54b53c",
         "type": "link in",
         "z": "128b0e5f936d4a61",
-        "name": "link in 1",
+        "name": "rest api at Central Hub",
         "links": [
             "e08e7e8e934da8c9"
         ],
@@ -1239,7 +1537,7 @@
         "scope": null,
         "uncaught": true,
         "x": 260,
-        "y": 520,
+        "y": 940,
         "wires": [
             [
                 "2aee9377dc8335de"
@@ -1307,7 +1605,7 @@
         "name": "1. REST API",
         "info": "",
         "x": 250,
-        "y": 220,
+        "y": 240,
         "wires": []
     },
     {
@@ -1379,13 +1677,13 @@
         "id": "7dc16c2af90863cf",
         "type": "link out",
         "z": "128b0e5f936d4a61",
-        "name": "to Error Handling",
+        "name": "global catch to Error Handler",
         "mode": "link",
         "links": [
             "aba72505e8a116db"
         ],
-        "x": 1065,
-        "y": 520,
+        "x": 1205,
+        "y": 940,
         "wires": []
     },
     {
@@ -1397,8 +1695,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 970,
-        "y": 700,
+        "x": 1110,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1420,8 +1718,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 720,
-        "y": 700,
+        "x": 900,
+        "y": 1100,
         "wires": [
             [
                 "52033c6aee34575d"
@@ -1447,14 +1745,14 @@
         "repair": false,
         "outputs": 2,
         "x": 490,
-        "y": 520,
+        "y": 940,
         "wires": [
             [
                 "7dc16c2af90863cf"
             ],
             [
-                "84d3a92d01850947",
-                "f0b22909d531de28"
+                "f0b22909d531de28",
+                "9def95785817a0a5"
             ]
         ]
     },
@@ -1462,22 +1760,110 @@
         "id": "f0b22909d531de28",
         "type": "link out",
         "z": "128b0e5f936d4a61",
-        "name": "to Error Handling",
+        "name": "global catch to Error Handler",
         "mode": "link",
         "links": [
             "aba72505e8a116db"
         ],
-        "x": 1065,
+        "x": 1205,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "bee4f680967d791d",
+        "type": "modbus-server",
+        "z": "128b0e5f936d4a61",
+        "name": "MODBUS TCP SERVER",
+        "logEnabled": true,
+        "hostname": "0.0.0.0",
+        "serverPort": 10502,
+        "responseDelay": 100,
+        "delayUnit": "ms",
+        "coilsBufferSize": "32",
+        "holdingBufferSize": "0",
+        "inputBufferSize": "32",
+        "discreteBufferSize": "0",
+        "showErrors": true,
+        "showStatusActivities": true,
+        "x": 670,
         "y": 600,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d50e9f79067c20c4",
+        "type": "comment",
+        "z": "128b0e5f936d4a61",
+        "name": "2. MODBUS TCP",
+        "info": "",
+        "x": 260,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9def95785817a0a5",
+        "type": "switch",
+        "z": "128b0e5f936d4a61",
+        "name": "check valid http req",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 1100,
+        "wires": [
+            [
+                "84d3a92d01850947"
+            ]
+        ]
+    },
+    {
+        "id": "e23f9e4219dd1d1d",
+        "type": "link in",
+        "z": "128b0e5f936d4a61",
+        "name": "modbus tcp at Central Hub",
+        "links": [
+            "3bdb059b5d29aae4",
+            "76732a76b8640c0e"
+        ],
+        "x": 195,
+        "y": 600,
+        "wires": [
+            [
+                "bee4f680967d791d"
+            ]
+        ]
+    },
+    {
+        "id": "e0fb8ee0893c3752",
+        "type": "comment",
+        "z": "128b0e5f936d4a61",
+        "name": "Error catch",
+        "info": "",
+        "x": 240,
+        "y": 880,
         "wires": []
     },
     {
         "id": "aba72505e8a116db",
         "type": "link in",
         "z": "0cee0d2940a34c4b",
-        "name": "link in 2",
+        "name": "at Error Handler",
         "links": [
             "7dc16c2af90863cf",
+            "a1eb6369b11e4656",
+            "ac324dddcc2e88db",
             "f0b22909d531de28"
         ],
         "x": 165,
@@ -1501,7 +1887,7 @@
         "id": "b75e835548d3b2c1",
         "type": "comment",
         "z": "0cee0d2940a34c4b",
-        "name": "1. Log to .txt file at C:\\.node-red-data",
+        "name": "1. Log to .txt file at C:\\.node-red-data\\log.txt",
         "info": "",
         "x": 540,
         "y": 180,

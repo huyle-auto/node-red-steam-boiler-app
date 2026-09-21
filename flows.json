@@ -15,6 +15,14 @@
         "env": []
     },
     {
+        "id": "8b53341859cc305a",
+        "type": "tab",
+        "label": "MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "128b0e5f936d4a61",
         "type": "tab",
         "label": "Central Hub",
@@ -357,6 +365,37 @@
         "showErrors": false,
         "showWarnings": true,
         "showLogs": true
+    },
+    {
+        "id": "d6e4112e4b5ea252",
+        "type": "mqtt-broker",
+        "name": "AEDES INTERNAL BROKER",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "mqttx_f1162b5e",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": false,
+        "autoUnsubscribe": false,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
         "id": "ec759b880fb7b90b",
@@ -845,7 +884,7 @@
                 }
             }
         ],
-        "x": 290,
+        "x": 270,
         "y": 140,
         "wires": [
             [
@@ -879,8 +918,7 @@
                 "b96b747077cf6eba"
             ],
             [
-                "300549830c0f0298",
-                "02abcdf9c36e3dd3"
+                "170cc16ee2c50cde"
             ]
         ]
     },
@@ -893,8 +931,8 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 1030,
-        "y": 340,
+        "x": 1330,
+        "y": 420,
         "wires": []
     },
     {
@@ -930,8 +968,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 800,
-        "y": 340,
+        "x": 1100,
+        "y": 420,
         "wires": [
             [
                 "01eb0e9ef5f6899d"
@@ -977,7 +1015,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 800,
+        "x": 1100,
         "y": 240,
         "wires": [
             [
@@ -1004,7 +1042,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1020,
+        "x": 1320,
         "y": 240,
         "wires": [
             [
@@ -1024,8 +1062,110 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1250,
+        "x": 1550,
         "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "170cc16ee2c50cde",
+        "type": "switch",
+        "z": "1d8c9e704f4ac278",
+        "name": "check http / non-http",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 820,
+        "y": 240,
+        "wires": [
+            [
+                "02abcdf9c36e3dd3"
+            ],
+            [
+                "7ea3d34dddaf0a00",
+                "300549830c0f0298"
+            ]
+        ]
+    },
+    {
+        "id": "7ea3d34dddaf0a00",
+        "type": "change",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.id",
+                "pt": "msg",
+                "to": "36145839c5fab785",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            [
+                "a371f141ebbe24c5"
+            ]
+        ]
+    },
+    {
+        "id": "a371f141ebbe24c5",
+        "type": "change",
+        "z": "1d8c9e704f4ac278",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "origin.name",
+                "pt": "msg",
+                "to": "GetBoilerStatus.sql",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1320,
+        "y": 340,
+        "wires": [
+            [
+                "2c6c793a8a80b005"
+            ]
+        ]
+    },
+    {
+        "id": "2c6c793a8a80b005",
+        "type": "function",
+        "z": "1d8c9e704f4ac278",
+        "name": "propagate soft error ",
+        "func": "node.error(msg.error?.message || \"Soft error occurred. No message provided\", msg);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1550,
+        "y": 340,
         "wires": [
             []
         ]
@@ -1514,6 +1654,177 @@
         "info": "blocks if within deadband.\r\n\r\nbut the value is written to server memory.\r\nso users see old value if not updated."
     },
     {
+        "id": "feec1326921b755e",
+        "type": "mqtt out",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d6e4112e4b5ea252",
+        "x": 1170,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d0ddda8de29f128a",
+        "type": "catch",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "ee9a4ec1cfd80345"
+            ]
+        ]
+    },
+    {
+        "id": "ee9a4ec1cfd80345",
+        "type": "link out",
+        "z": "8b53341859cc305a",
+        "name": "mqtt in to Error Handler",
+        "mode": "link",
+        "links": [],
+        "x": 505,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "31cb1483869f3e69",
+        "type": "subflow:1d8c9e704f4ac278",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "29b7bb738413c713"
+            ]
+        ]
+    },
+    {
+        "id": "cedd7ed46ec87412",
+        "type": "inject",
+        "z": "8b53341859cc305a",
+        "name": "trigger per 30s",
+        "props": [],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "31cb1483869f3e69"
+            ]
+        ]
+    },
+    {
+        "id": "b46bcf82cb2b7f28",
+        "type": "function",
+        "z": "8b53341859cc305a",
+        "name": "factory/boiler/alarm",
+        "func": "const state = String(msg.payload.pressureState).trim().toLowerCase();\n\nmsg.topic = \"factory/boiler/alarm\";\n\nmsg.qos = 1;\n\nmsg.retained = true;\n\nif (state != \"normal\"){\n    msg.payload = {\n        \"alarmState\": state\n    };\n} \nelse {\n    msg.payload = null; // Clear retained message on normal reading\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 360,
+        "wires": [
+            [
+                "0b181108ea081104"
+            ]
+        ]
+    },
+    {
+        "id": "29b7bb738413c713",
+        "type": "json",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "b46bcf82cb2b7f28",
+                "d5c515b2f0aada91"
+            ]
+        ]
+    },
+    {
+        "id": "d5c515b2f0aada91",
+        "type": "function",
+        "z": "8b53341859cc305a",
+        "name": "factory/boiler/status",
+        "func": "msg.topic = \"factory/boiler/status\";\n\nmsg.qos = 0;\n\nmsg.retained = false;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 260,
+        "wires": [
+            [
+                "feec1326921b755e"
+            ]
+        ]
+    },
+    {
+        "id": "ab1a89f50878c392",
+        "type": "mqtt out",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d6e4112e4b5ea252",
+        "x": 1170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0b181108ea081104",
+        "type": "rbe",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1030,
+        "y": 360,
+        "wires": [
+            [
+                "ab1a89f50878c392"
+            ]
+        ]
+    },
+    {
         "id": "2f0ce6730b54b53c",
         "type": "link in",
         "z": "128b0e5f936d4a61",
@@ -1537,10 +1848,11 @@
         "scope": null,
         "uncaught": true,
         "x": 260,
-        "y": 940,
+        "y": 1180,
         "wires": [
             [
-                "2aee9377dc8335de"
+                "2aee9377dc8335de",
+                "3a296c4a29ef13b5"
             ]
         ]
     },
@@ -1584,7 +1896,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 360,
+        "x": 370,
         "y": 300,
         "wires": [
             [
@@ -1683,7 +1995,7 @@
             "aba72505e8a116db"
         ],
         "x": 1205,
-        "y": 940,
+        "y": 1180,
         "wires": []
     },
     {
@@ -1696,7 +2008,7 @@
             "content-type": "application/json"
         },
         "x": 1110,
-        "y": 1100,
+        "y": 1340,
         "wires": []
     },
     {
@@ -1719,7 +2031,7 @@
         "to": "",
         "reg": false,
         "x": 900,
-        "y": 1100,
+        "y": 1340,
         "wires": [
             [
                 "52033c6aee34575d"
@@ -1745,7 +2057,7 @@
         "repair": false,
         "outputs": 2,
         "x": 490,
-        "y": 940,
+        "y": 1180,
         "wires": [
             [
                 "7dc16c2af90863cf"
@@ -1766,7 +2078,7 @@
             "aba72505e8a116db"
         ],
         "x": 1205,
-        "y": 1020,
+        "y": 1260,
         "wires": []
     },
     {
@@ -1786,7 +2098,7 @@
         "showErrors": true,
         "showStatusActivities": true,
         "x": 670,
-        "y": 600,
+        "y": 560,
         "wires": [
             [],
             [],
@@ -1821,7 +2133,7 @@
         "repair": false,
         "outputs": 1,
         "x": 710,
-        "y": 1100,
+        "y": 1340,
         "wires": [
             [
                 "84d3a92d01850947"
@@ -1834,11 +2146,10 @@
         "z": "128b0e5f936d4a61",
         "name": "modbus tcp at Central Hub",
         "links": [
-            "3bdb059b5d29aae4",
-            "76732a76b8640c0e"
+            "3bdb059b5d29aae4"
         ],
         "x": 195,
-        "y": 600,
+        "y": 560,
         "wires": [
             [
                 "bee4f680967d791d"
@@ -1850,6 +2161,69 @@
         "type": "comment",
         "z": "128b0e5f936d4a61",
         "name": "Error catch",
+        "info": "",
+        "x": 240,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "35fab0cd1ea46395",
+        "type": "comment",
+        "z": "128b0e5f936d4a61",
+        "name": "3. MQTT",
+        "info": "",
+        "x": 240,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "77a1a4844b814e9c",
+        "type": "aedes broker",
+        "z": "128b0e5f936d4a61",
+        "name": "",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "persistence_bind": "memory",
+        "dburl": "",
+        "persist_to_file": true,
+        "usetls": false,
+        "x": 670,
+        "y": 780,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3a296c4a29ef13b5",
+        "type": "debug",
+        "z": "128b0e5f936d4a61",
+        "name": "error caught",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "826642724931813c",
+        "type": "comment",
+        "z": "128b0e5f936d4a61",
+        "name": "4. OPC UA",
         "info": "",
         "x": 240,
         "y": 880,

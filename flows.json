@@ -371,7 +371,7 @@
         "type": "mqtt-broker",
         "name": "AEDES INTERNAL BROKER",
         "broker": "127.0.0.1",
-        "port": 1883,
+        "port": "1884",
         "clientid": "mqttx_f1162b5e",
         "autoConnect": true,
         "usetls": false,
@@ -1825,6 +1825,63 @@
         ]
     },
     {
+        "id": "c2ed329f6ff93c07",
+        "type": "function",
+        "z": "8b53341859cc305a",
+        "name": "factory/mqtt-broker/status",
+        "func": "msg.topic = \"factory/mqtt-broker/status\";\n\nmsg.qos = 0;\n\nmsg.retained = false;\n\nmsg.payload = {\n    \"status\": \"MQTT broker is running.\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 180,
+        "wires": [
+            [
+                "b14667debc4c098a"
+            ]
+        ]
+    },
+    {
+        "id": "b14667debc4c098a",
+        "type": "mqtt out",
+        "z": "8b53341859cc305a",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d6e4112e4b5ea252",
+        "x": 1170,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "28545e23043d3970",
+        "type": "inject",
+        "z": "8b53341859cc305a",
+        "name": "trigger per 30s",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "c2ed329f6ff93c07"
+            ]
+        ]
+    },
+    {
         "id": "2f0ce6730b54b53c",
         "type": "link in",
         "z": "128b0e5f936d4a61",
@@ -2181,7 +2238,7 @@
         "type": "aedes broker",
         "z": "128b0e5f936d4a61",
         "name": "",
-        "mqtt_port": 1883,
+        "mqtt_port": "1884",
         "mqtt_ws_bind": "port",
         "mqtt_ws_port": "",
         "mqtt_ws_path": "",

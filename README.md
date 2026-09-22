@@ -1,4 +1,5 @@
 node-red-steam-boiler-app
 =========================
 
-Made for integrating MES/ERP with SteamBoilerApp via MQTT, REST API, OPC UA and Modbus. 
+Node-Red MES integration service that targets REST, MQTT, Modbus and OPC UA.
+Visit parent SCADA project [steam-boiler-app](https://github.com/huyle-auto/steam-boiler-app)
